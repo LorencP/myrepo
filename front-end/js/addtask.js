@@ -37,7 +37,7 @@ $("#btn-submit").click(function(event){
          
          Toast.fire({
           type: 'success',
-          title: 'Task added successfully'
+          title: 'Task added successfully!'
          }).then(function(){ window.location.href = "index.php";})
         
         }, () => {});
