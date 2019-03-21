@@ -16,7 +16,7 @@ $("#btn-submit").click(function(event){
        taskMin === ""
     
       ){
-        Swal.fire("Required Field Left Blank", "You had one job...", "error", {
+        Swal.fire("Required Field Left Blank!", "You had one job...", "error", {
             timer: 3000
         });
         valid = false;
