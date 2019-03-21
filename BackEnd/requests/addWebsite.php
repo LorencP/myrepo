@@ -18,8 +18,8 @@ $websiteURL = $_POST["websiteURL"];
 
 
 $dl = new dataLayer();
-$website = $dl-> saveNewWebsite($websiteName, $websiteURL);
-echo(json_encode($website));
+$website = $dl-> saveNewWebsite($websiteName, $websiteURL){
+echo(json_encode($recordings));
 
 return;
 

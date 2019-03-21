@@ -192,6 +192,35 @@ class DataLayer{
         
     }
 
+    function d_saveNewTask($taskName, $taskMax, $taskMin){
+
+        $db = new db();
+        $db = $db->connect();
+        $sql = "INSERT INTO Tasks (TaskName, TaskMax, TaskMin) VALUES (:taskName, :taskMax, :taskMin)";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':taskName', $taskName);
+        $stmt->bindParam(':taskMax', $taskMax);
+        $stmt->bindParam(':taskMax', $taskMin);
+
+        $stmt-> execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+        $sql = "SELECT * From Tasks where TaskName = :taskName and TaskMax = :taskMax and TaskMin = :taskMin";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':taskName', $taskName);
+        $stmt->bindParam(':taskMax', $taskMax);
+        $stmt->bindParam(':taskMax', $taskMin);
+
+        $stmt-> execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        
+        foreach($rows as $row){
+            return $row;
+        }
+        
+    }
     
 }
 

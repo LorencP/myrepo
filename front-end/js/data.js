@@ -77,3 +77,33 @@ function d_saveNewWebsite(websiteName, websiteURL) {
 
   return promiseObj;
 }
+
+function d_saveNewTask(taskName, taskMax, taskMin) {
+  var params = new Object();
+  params.taskName = taskName;
+  params.taskMax = taskMax;
+  params.taskMin = taskMin;
+  //params = JSON.stringify(params);
+
+  var promiseObj = new Promise(function(resolve, reject) {
+    request = $.ajax({
+      url: "/screen-capture/BackEnd/requests/addTask.php",
+      type: "post",
+      data: params,
+      success: function(response, textStatus, jqXHR) {
+        // Log a message to the console
+
+        var addedtask = JSON.parse(response);
+
+        console.log(addedtask);
+        resolve(addedtask);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("some error");
+        reject(errorThrown);
+      }
+    });
+  });
+
+  return promiseObj;
+}
